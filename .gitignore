@@ -1,0 +1,36 @@
+# 青藜 - .gitignore
+
+# 虚拟环境
+.venv/
+venv/
+env/
+
+# ChromaDB 数据
+chroma/
+chromadb/
+
+# Python 缓存
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# 本地映射
+kb_map.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# 环境文件
+.env
+
+# 测试文件
+/tmp/test_rag.epub
