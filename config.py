@@ -30,8 +30,13 @@ TOP_K = 15                     # 全局 top_k 上限
 QUERY_EXPANSION_COUNT = 3      # Query 多路改写数
 
 # 模型配置
-EMBEDDING_MODEL = "ep-20260616150213-4zn57"
+EMBEDDING_MODEL = "ep-xxxxxxxx"      # 实际值从环境变量 RAG_EMBEDDING_ENDPOINT 读取
 QUERY_REWRITE_MODEL = "doubao-seed-2-0-pro-260215"
+
+
+def get_embedding_endpoint() -> str:
+    """Embedding endpoint ID，优先环境变量，fallback 到配置常量"""
+    return os.environ.get("RAG_EMBEDDING_ENDPOINT", EMBEDDING_MODEL)
 
 # 豆包 API 配置
 ARK_BASE_URL = "https://ark.cn-beijing.volces.com/api/v3"

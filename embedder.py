@@ -17,7 +17,7 @@ from config import (
     ARK_BASE_URL, EMBEDDING_MODEL,
     EMBEDDING_BATCH_SIZE, EMBEDDING_MAX_RETRIES,
     EMBEDDING_CONTENT_PREFIX, EMBEDDING_QUERY_PREFIX,
-    get_ark_api_key,
+    get_ark_api_key, get_embedding_endpoint,
 )
 from models import Document, Chunk
 
@@ -30,8 +30,8 @@ _MULTIMODAL_CONCURRENCY = 5
 class Embedder:
     """文本向量化，支持 content/query 双 prefix + 分批写入"""
 
-    def __init__(self, model: str = EMBEDDING_MODEL):
-        self.model = model
+    def __init__(self, model: Optional[str] = None):
+        self.model = model or get_embedding_endpoint()
         self.api_key = get_ark_api_key()
         self.content_prefix = EMBEDDING_CONTENT_PREFIX
         self.query_prefix = EMBEDDING_QUERY_PREFIX
